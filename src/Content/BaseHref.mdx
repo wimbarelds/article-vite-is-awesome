@@ -1,0 +1,18 @@
+import { Code } from 'wb-slides';
+import example from './Code/BaseHref.ts?raw';
+
+## Base Href
+
+The React workshop is deployed to GitHub Pages, meaning the URL ends up looking something like
+`[owner].github.io/[repository]`. This means that files aren't served from the root directory. We
+can inform Vite of this with `vite build --base="/repository-name/"`.
+
+While this command sets the base URL, it doesn't automatically add `<base href="/repository-name/">`
+to your HTML. I could manually add this to my `index.html`, but then it would also appear in the
+HTML when I don't use the `--base` argument. I had some time and a minor inconvenience to scratch,
+so I decided to make a plugin for it.
+
+<Code code={example} />
+
+Again, **EASY!** Not only is the code simple to write, but it's also straightforward to understand,
+modify, or extend.

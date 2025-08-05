@@ -1,0 +1,23 @@
+import { Code } from 'wb-slides';
+import example from './Code/LessBasicIcons.ts?raw';
+
+## Less Basic Icons
+
+At this point I was quite pleased with what I'd made. I figured I'd run a lighthouse test so it
+could tell me what a good job I'd done...
+
+Indeed, I achieved 90+ scores across the board. However, Lighthouse still offered suggestions for
+further improvement. One key suggestion was to address "render blocking requests," which are HTTP
+requests that prevent your page from being rendered until loaded.
+
+Our "awesome" icon plugin was no longer good enough. It first triggers a request to load the CSS
+file, and then a subsequent request to load the font itself. How can we fix this?
+
+Well...
+
+<Code code={example} />
+
+This code is still quite readable! We download the CSS file, then the font binary, convert it to
+Base64, and finally, inline the entire thing directly into `index.html`. This resulted in a
+Lighthouse performance score of **100**. While a React workshop didn't strictly need such a high
+score, it just goes to show: Vite is awesome!

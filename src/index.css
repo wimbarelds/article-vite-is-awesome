@@ -1,0 +1,75 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+@source '../node_modules/wb-slides';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    @apply text-[16px] sm:text-[20px];
+
+    --colors:
+      color-mix(in oklch, oklch(36.322% 0.15751 300.084) 75%, black),
+      color-mix(in oklch, oklch(45.455% 0.18093 331.818) 75%, black),
+      color-mix(in oklch, oklch(53.975% 0.21708 22.821) 75%, black),
+      color-mix(in oklch, oklch(70.528% 0.17361 55.465) 75%, black);
+    background: color-mix(in oklch, oklch(53.975% 0.21708 22.821) 75%, black)
+      linear-gradient(45deg, var(--colors)) fixed repeat;
+  }
+  button,
+  summary {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .styled-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+    scrollbar-color: #f29894 #4f000a;
+
+    .not-prose > pre[style] {
+      scrollbar-gutter: stable;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-slate-500) var(--color-slate-800);
+    }
+  }
+  .mui-icon {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+
+  code.cmd {
+    --tw-prose-code: var(--color-green-100);
+    @apply inline-block px-2 bg-green-950 rounded border border-white/25;
+  }
+}
+
+@layer override-typography {
+  .prose {
+    --tw-prose-invert-links: var(--color-orange-400);
+    --tw-prose-invert-bullets: var(--color-slate-100);
+
+    :not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+      a:hover {
+        color: var(--color-red-500);
+      }
+
+      code {
+        &::before,
+        &::after {
+          content: '';
+        }
+      }
+    }
+  }
+}

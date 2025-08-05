@@ -1,0 +1,39 @@
+import { Code } from 'wb-slides';
+import example from './Code/BaseHref.ts?raw';
+
+## Basic Icons
+
+Let's start with icons. Previously, I used custom React components that generated inline SVGs. They
+were configurable and neat, but not particularly scalable. I decided to switch to
+[**Material Symbols**](https://fonts.google.com/icons).
+
+Material Symbols can be used in a few different ways:
+
+- SVG files
+- PNG files
+- A font containing all icons
+- A font with specific icons
+
+I opted for the last option, which involves referencing a CSS file that includes desired icon names
+as a query parameter (e.g., `&icon_names=home,palette,settings`).
+
+While you could simply add this to your `index.html`, adding a new icon (like `close`) later would
+result in an error:
+
+<img
+  src="google-fonts-alphabetic.png"
+  alt="Error 400, Invalid selector, icon names must be sorted alphabetically"
+  className="max-w-md rounded mx-auto"
+/>
+
+That's easy to fix, but it does mean maintaining and manually sorting the list of icons in your
+`index.html`, which doesn't really feel like the right place for this.
+
+_Solution?_
+
+<Code code={example} />
+
+This solution is both simple and powerful. When Vite runs a development server or creates a build,
+this plugin automatically injects the correct `<link>` tag into your HTML. You pass the icon names
+directly to the plugin (a better place for this configuration than `index.html`), and they're sorted
+automatically.

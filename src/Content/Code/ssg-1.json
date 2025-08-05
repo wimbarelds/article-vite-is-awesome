@@ -1,0 +1,6 @@
+{
+  "name": "your-package",
+  "scripts": {
+    "build": "npm run build:client && npm run build:server && node generate-static.js"
+  }
+}

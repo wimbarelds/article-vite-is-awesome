@@ -1,0 +1,50 @@
+import { Code } from 'wb-slides';
+import example1 from './Code/ssg-1.json?raw';
+import example2 from './Code/ssg-2.ts?raw';
+
+## Static Site Generation
+
+At this point, I had a React app with routing and wanted to add pre-rendering/static site
+generation. You might wonder why a slide deck needs static site generation. That's a good question,
+but that reason isn't relevant for this article.
+
+The challenge was that most mature and popular static site generation solutions for React require
+you to structure your application in a specific way, often involving file-based routing or their
+proprietary routing solutions. While there's nothing wrong with these approaches, I already had a
+functional React app with routing exactly as I wanted it. I didn't want to change my application; I
+only wanted to modify the build process.
+
+So, as I often do when I have enough time, I decided to find my own solution. A
+[Medium article](https://medium.com/@singhdharmu89/how-to-implement-ssr-ssg-in-a-react-19-app-using-vite-with-react-router-dom-without-plugins-1646adce99c1)
+provided some guidance, but I believed I could improve upon it.
+
+### Traditional Static Site Generation
+
+The established method for static site generation with Vite, without a full framework, typically
+involves these steps:
+
+1.  **Client Build:** Create a production build where `createRoot(el).render(<App />)` is replaced
+    with `hydrateRoot(el, <App />)`.
+2.  **Server Build:** Create a server build that exports a
+    `function render(url: string): Promise<string>`, which calls `renderToString(<App />)`.
+3.  **Prerender Script:** Execute a `prerender.js` file that combines the output of both build
+    artifacts to generate an HTML file for each route you want prerendered.
+
+Your build command often ends up looking something like this:
+
+<Code code={example1} />
+
+### New and Improved Static Site Generation
+
+Running several separate commands sequentially to create a build felt clunky to me. Thanks to
+recently added Vite features – specifically the **Environment API** and the **`buildApp` hook** - we
+can create a more cohesive process.
+
+The following configuration is larger than the previous examples, but it remains quite easy to
+understand if you go line-by-line:
+
+<Code code={example2} />
+
+This configuration creates a remarkably cohesive build process. We simply define two environments,
+and the **`buildApp` hook** allows us to control their build processes. We can then easily add code
+to prerender all our routes. Now, a single `npm run build` command handles everything in one go.

@@ -1,0 +1,12 @@
+:root {
+  background: #121314;
+  color: #fff;
+  font-family: Arial;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 0.5rem;
+}
