@@ -27,8 +27,8 @@ importers:
         specifier: 4.1.11
         version: 4.1.11
       wb-slides:
-        specifier: 0.1.18
-        version: 0.1.18(@mdx-js/react@3.1.0(@types/react@19.1.9)(react@19.1.1))(@mdx-js/rollup@3.1.0(acorn@8.15.0)(rollup@4.44.1))(@wooorm/starry-night@3.8.0)(clsx@2.1.1)(react-dom@19.1.1(react@19.1.1))(react-router@7.6.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-syntax-highlighter@15.6.1(react@19.1.1))(react@19.1.1)(rehype-starry-night@2.2.0)
+        specifier: 0.1.19
+        version: 0.1.19(@mdx-js/react@3.1.0(@types/react@19.1.9)(react@19.1.1))(@mdx-js/rollup@3.1.0(acorn@8.15.0)(rollup@4.44.1))(@wooorm/starry-night@3.8.0)(clsx@2.1.1)(react-dom@19.1.1(react@19.1.1))(react-router@7.6.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-syntax-highlighter@15.6.1(react@19.1.1))(react@19.1.1)(rehype-starry-night@2.2.0)
     devDependencies:
       '@eslint/js':
         specifier: 9.32.0
@@ -2403,8 +2403,8 @@ packages:
     resolution: {integrity: sha512-o8qghlI8NZHU1lLPrpi2+Uq7abh4GGPpYANlalzWxyWteJOCsr/P+oPBA49TOLu5FTZO4d3F9MnWJfiMo4BkmA==}
     engines: {node: '>=18'}
 
-  wb-slides@0.1.18:
-    resolution: {integrity: sha512-xRkU26qoD4o5MkOqRKysAvszBHltKlZmwPckzoqwMgMkY8mZgHRTehlIuRVykRTC/HWRvmUF7qUw8gGkFHZIMw==}
+  wb-slides@0.1.19:
+    resolution: {integrity: sha512-GTZjA62rjz0oPyS3Be8k/GzeLEe016S0iPhuhsfj5Z2D1euRMuk5eXKcy9xCGg+JznYVBw1SJKQFR1SpdI9vZw==}
     peerDependencies:
       '@mdx-js/react': ^3.1.0
       '@mdx-js/rollup': ^3.1.0
@@ -5199,7 +5199,7 @@ snapshots:
     dependencies:
       xml-name-validator: 5.0.0
 
-  wb-slides@0.1.18(@mdx-js/react@3.1.0(@types/react@19.1.9)(react@19.1.1))(@mdx-js/rollup@3.1.0(acorn@8.15.0)(rollup@4.44.1))(@wooorm/starry-night@3.8.0)(clsx@2.1.1)(react-dom@19.1.1(react@19.1.1))(react-router@7.6.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-syntax-highlighter@15.6.1(react@19.1.1))(react@19.1.1)(rehype-starry-night@2.2.0):
+  wb-slides@0.1.19(@mdx-js/react@3.1.0(@types/react@19.1.9)(react@19.1.1))(@mdx-js/rollup@3.1.0(acorn@8.15.0)(rollup@4.44.1))(@wooorm/starry-night@3.8.0)(clsx@2.1.1)(react-dom@19.1.1(react@19.1.1))(react-router@7.6.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-syntax-highlighter@15.6.1(react@19.1.1))(react@19.1.1)(rehype-starry-night@2.2.0):
     dependencies:
       '@mdx-js/react': 3.1.0(@types/react@19.1.9)(react@19.1.1)
       '@mdx-js/rollup': 3.1.0(acorn@8.15.0)(rollup@4.44.1)
