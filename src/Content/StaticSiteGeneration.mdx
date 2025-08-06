@@ -1,7 +1,3 @@
-import { Code } from 'wb-slides';
-import example1 from './Code/ssg-1.json?raw';
-import example2 from './Code/ssg-2.ts?raw';
-
 ## Static Site Generation
 
 At this point, I had a React app with routing and wanted to add pre-rendering/static site
@@ -32,7 +28,9 @@ involves these steps:
 
 Your build command often ends up looking something like this:
 
-<Code code={example1} />
+```bash
+npm run build:client && npm run build:server && node generate-static.js
+```
 
 ### New and Improved Static Site Generation
 
@@ -43,7 +41,58 @@ can create a more cohesive process.
 The following configuration is larger than the previous examples, but it remains quite easy to
 understand if you go line-by-line:
 
-<Code code={example2} />
+```ts
+const baseConfig: UserConfig = {
+  plugins: [
+    react(),
+    // other plugins
+  ],
+};
+
+export default defineConfig(({ command }): UserConfig => {
+  if (command !== 'build') return baseConfig;
+
+  return {
+    ...baseConfig,
+    resolve: {
+      // Allow us to use a different entry point that uses hydrateRoot
+      alias: { '/src/main.tsx': '/src/entry-client.tsx' },
+    },
+    // Define a client and server environment
+    environments: {
+      client: { consumer: 'client' },
+      server: {
+        consumer: 'server',
+        build: {
+          emptyOutDir: false, // avoid deleting the client build
+          copyPublicDir: false, // we dont want anything except the 'server' js
+          // tell vite the entry-point for the server environment
+          rollupOptions: { input: 'src/entry-server.tsx' },
+        },
+      },
+    },
+    builder: {
+      buildApp: async (builder) => {
+        // Do the build for server and client
+        await builder.build(builder.environments.client);
+        await builder.build(builder.environments.server);
+
+        // Figure out where the files are
+        const serverJsPath = path.resolve(process.cwd(), 'dist/entry-server.js');
+        const indexHtmlPath = path.resolve(process.cwd(), 'dist/index.html');
+
+        // Read or import them
+        const renderFn = await import(serverJsPath).then((module) => module.render);
+        const indexHtml = fs.readFileSync(indexHtmlPath, { encoding: 'utf-8' });
+
+        // Prerender everything
+        const { prerender } = await import('./src/prerender');
+        await prerender(renderFn, indexHtml);
+      },
+    },
+  };
+});
+```
 
 This configuration creates a remarkably cohesive build process. We simply define two environments,
 and the **`buildApp` hook** allows us to control their build processes. We can then easily add code

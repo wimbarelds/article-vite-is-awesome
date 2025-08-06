@@ -1,0 +1,17 @@
+## Raw Imports
+
+There's a cool feature you get with Vite that few people know about, and I find this is particularly
+useful when you're trying to share code / code examples. That feature is "raw imports".
+
+How do you use it? How do you set it up? There isn't actually any setup you need to do. You just add
+`?raw` to the import statement. For example:
+
+```ts
+import packageJson from './package.json?raw';
+import changelog from './CHANGELOG.md?raw';
+import viteConfigCode from './vite.config.ts?raw';
+```
+
+Just a few examples of how you might use this. The values are automatically typed as `string`, and
+when importing with the `?raw` suffix the content of that file is always the "default export". You
+can do this with any (text-based) filetype.

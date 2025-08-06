@@ -6,7 +6,6 @@ import {
   vitePluginDeferScript,
   vitePluginGhPagesBase,
   vitePluginMdx,
-  vitePluginMuiIcons,
 } from 'wb-slides/vite';
 
 import { prerender } from './src/ssg/prerender';
@@ -18,10 +17,6 @@ export default defineConfig(({ command }): UserConfig => {
       react(),
       tailwindcss(),
       vitePluginGhPagesBase(),
-      vitePluginMuiIcons(
-        ['chevron_right', 'chevron_left', 'stat_1', 'stat_minus_1', 'more_horiz', 'construction'],
-        { inline: 'none' },
-      ),
       vitePluginDeferScript(),
     ],
   } satisfies UserConfig;

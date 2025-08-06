@@ -1,6 +1,3 @@
-import { Code } from 'wb-slides';
-import example from './Code/BaseHref.ts?raw';
-
 ## Base Href
 
 The React workshop is deployed to GitHub Pages, meaning the URL ends up looking something like
@@ -12,7 +9,24 @@ to your HTML. I could manually add this to my `index.html`, but then it would al
 HTML when I don't use the `--base` argument. I had some time and a minor inconvenience to scratch,
 so I decided to make a plugin for it.
 
-<Code code={example} />
+```ts
+export function vitePluginBaseHref(): PluginOption {
+  const { base = '/' } = minimist(argv.slice(2));
+
+  return {
+    name: 'html-basehref',
+    config: (current) => ({ ...current, base }), // Set the base public path
+    transformIndexHtml: () => [
+      {
+        // Add the `<base href="/repository-name/">` tag to the HTML
+        tag: 'base',
+        injectTo: 'head-prepend',
+        attrs: { href: base },
+      },
+    ],
+  };
+}
+```
 
 Again, **EASY!** Not only is the code simple to write, but it's also straightforward to understand,
 modify, or extend.

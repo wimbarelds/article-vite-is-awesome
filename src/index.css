@@ -4,6 +4,9 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@import '@wooorm/starry-night/style/core';
+@import '@wooorm/starry-night/style/dark';
+
 @layer base {
   :root {
     @apply text-[16px] sm:text-[20px];
@@ -28,10 +31,10 @@
     scrollbar-gutter: stable;
     scrollbar-color: #f29894 #4f000a;
 
-    .not-prose > pre[style] {
+    pre:has(> code[class^='language']) {
       scrollbar-gutter: stable;
       scrollbar-width: thin;
-      scrollbar-color: var(--color-slate-500) var(--color-slate-800);
+      scrollbar-color: var(--color-neutral-500) var(--color-neutral-900);
     }
   }
   .mui-icon {
