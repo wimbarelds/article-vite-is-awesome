@@ -1,5 +1,6 @@
 import { Code } from 'wb-slides';
-import example from './Code/BaseHref.ts?raw';
+import example from './Code/BasicIcons.ts?raw';
+import usageExample from './Code/UsingAPlugin.ts?raw';
 
 ## Basic Icons
 
@@ -34,6 +35,16 @@ _Solution?_
 <Code code={example} />
 
 This solution is both simple and powerful. When Vite runs a development server or creates a build,
-this plugin automatically injects the correct `<link>` tag into your HTML. You pass the icon names
-directly to the plugin (a better place for this configuration than `index.html`), and they're sorted
-automatically.
+this plugin automatically injects the correct `<link>` tag into your HTML `<head>`. You pass the
+icon names directly to the plugin (a better place for this configuration than `index.html`), and
+they're sorted automatically.
+
+### Using your plugin
+
+Vite plugins are usually just a function that you execute. You don't have to build them or do
+anything fancy.
+
+<Code code={usageExample} />
+
+In the above example we put our plugin in a separate file and we're just importing it. But you could
+also simply keep the code of your plugin in your `vite.config.ts` file.
