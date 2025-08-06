@@ -17,13 +17,15 @@ as a query parameter (e.g., `&icon_names=home,palette,settings`).
 While you could simply add this to your `index.html`, adding a new icon (like `close`) later would
 result in an error:
 
-<img
-  src="google-fonts-alphabetic.webp"
-  alt="Error 400, Invalid selector, icon names must be sorted alphabetically"
-  className="max-w-md rounded mx-auto"
-  width="372"
-  height="124"
-/>
+<div>
+  <img
+    src="google-fonts-alphabetic.webp"
+    alt="Error 400, Invalid selector, icon names must be sorted alphabetically"
+    className="rounded mx-auto"
+    width="372"
+    height="124"
+  />
+</div>
 
 That's easy to fix, but it does mean maintaining and manually sorting the list of icons in your
 `index.html`, which doesn't really feel like the right place for this.

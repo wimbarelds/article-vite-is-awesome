@@ -35,6 +35,7 @@
       scrollbar-gutter: stable;
       scrollbar-width: thin;
       scrollbar-color: var(--color-neutral-500) var(--color-neutral-900);
+      @apply max-md:-mx-4;
     }
   }
   .mui-icon {
